@@ -1,0 +1,47 @@
+@api_HostAddress = http://localhost:5294
+
+@api_HostAddress = http://localhost:5294
+
+###
+# Get all authentication requests for a user
+GET {{api_HostAddress}}/Authentication?userName=sampleUser
+Accept: application/json
+
+###
+# Resolve an authentication request
+POST {{api_HostAddress}}/Authentication
+Content-Type: application/json
+Accept: application/json
+
+{
+  "requestId": "sample-request-id",
+  "signedData": "sample-signed-data"
+}
+
+###
+# Create and wait for an authentication request
+POST {{api_HostAddress}}/Authentication/createwait
+Content-Type: application/json
+Accept: application/json
+
+{
+  "userName": "sampleUser",
+  "otp": "123456"
+}
+
+###
+# Set the type for monitoring
+POST {{api_HostAddress}}/Authentication/settype
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "sampleType"
+}
+
+###
+# Get report of resolved authentication requests
+GET {{api_HostAddress}}/Authentication/report
+Accept: application/json
+
+###
